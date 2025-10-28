@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy 18 Months Anniversary</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Great+Vibes&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Great Vibes', cursive;
+    background: radial-gradient(circle at center, #ffdde1, #ee9ca7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #6a0f22;
+    user-select: none;
+  }
+
+  #container {
+    width: 90%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 30px;
+    padding: 1.5rem 2rem 2.5rem;
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  h1 {
+    font-family: 'Parisienne', cursive;
+    font-size: 3.5rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 8px #ff7ea7;
+  }
+
+  p.message {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 1rem auto 2rem;
+    font-weight: 500;
+    color: #8a0031;
+    text-shadow: 1px 1px 5px #f4c2c2;
+  }
+
+  #photo {
+    width: 280px;
+    height: 380px;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.7);
+    margin: 0 auto 2rem;
+    border: 3.5px solid #ff86a2;
+    transition: transform 1s ease, filter 1s ease;
+  }
+
+  #photo.closed {
+    transform: scale(0);
+    filter: grayscale(100%) blur(3px);
+  }
+
+  #buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  button {
+    background: linear-gradient(145deg, #ff6f91, #ff70a6);
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    padding: 0.8rem 2.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.6);
+    transition: all 0.3s ease;
+    font-family: 'Great Vibes', cursive;
+    letter-spacing: 1.5px;
+  }
+
+  button:hover {
+    background: linear-gradient(145deg, #ff90b3, #ff86a2);
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.9);
+    transform: translateY(-3px);
+  }
+
+  /* Romantic floating hearts animation */
+  .heart {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background: #ff6f91;
+    transform: rotate(-45deg);
+    left: 50%;
+    bottom: -50px;
+    opacity: 0.8;
+    animation: floatUp 6s linear infinite;
+    z-index: 10;
+  }
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #ff6f91;
+    border-radius: 50%;
+  }
+  .heart::before {
+    top: -15px;
+    left: 0;
+  }
+  .heart::after {
+    left: 15px;
+    top: 0;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateX(0) translateY(0) rotate(-45deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateX(calc(var(--x)*1px)) translateY(-700px) rotate(-45deg);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="container">
+  <h1>Happy 18 Months Anniversary</h1>
+  <div id="photo" class="closed">
+    <img src="https://i.imgur.com/YOUR_IMAGE_LINK.jpg" alt="Couple Anniversary" style="width:100%; height:100%; object-fit: cover;" />
+  </div>
+  <p class="message">
+    Happy 18 months anniversary Sushu!<br />
+    Finally 1.5 years together with endless memories, fun, and love. 💖
+  </p>
+  <div id="buttons">
+    <button id="openBtn">Open</button>
+    <button id="closeBtn">Close</button>
+  </div>
+</div>
+
+<script>
+  const photo = document.getElementById('photo');
+  const openBtn = document.getElementById('openBtn');
+  const closeBtn = document.getElementById('closeBtn');
+
+  openBtn.onclick = () => {
+    photo.classList.remove('closed');
+  };
+
+  closeBtn.onclick = () => {
+    photo.classList.add('closed');
+  };
+
+  // Create floating hearts randomly
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.setProperty('--x', (Math.random() * 100) - 50);
+    heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+    heart.style.fontSize = (10 + Math.random() * 20) + 'px';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+
+  setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
